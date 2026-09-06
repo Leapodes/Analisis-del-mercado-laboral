@@ -1,0 +1,100 @@
+--------------------------------------------------------------------------------
+          TRABAJO DE ANÁLISIS DE DATOS - MERCADO LABORAL EPH
+                         CABA Y CONURBANO BONAERENSE
+                   BALANCE POST-PANDEMIA (2020 - 2026)
+--------------------------------------------------------------------------------
+
+INTRODUCCIÓN Y OBJETIVO DEL ESTUDIO
+--------------------------------------------------------------------------------
+Este informe evalúa la evolución del mercado de trabajo y los ingresos reales 
+en el Área Metropolitana de Buenos Aires (AMBA) durante el período 2020-2026. 
+El objetivo principal es realizar un balance integral que refleje la trayectoria 
+económica y laboral desde la irrupción de la pandemia de COVID-19 (2020), 
+analizando el proceso de recuperación, la reconfiguración del empleo y el 
+impacto de la inflación en el poder adquisitivo hasta el primer semestre de 2026.
+
+El estudio compara dos realidades socioeconómicas del AMBA:
+- Ciudad Autónoma de Buenos Aires (CABA - Aglomerado INDEC 32): Economía basada 
+  en servicios y mayor dinamismo del empleo profesional registrado.
+- Conurbano Bonaerense (Partidos del GBA - Aglomerado INDEC 33): Mayor densidad 
+  poblacional e industrial, con mayor volatilidad e informalidad laboral.
+
+-------------------------------------------------------------------------------
+ESTRUCTURA Y FUNCIONALIDADES DEL SISTEMA
+-------------------------------------------------------------------------------
+
+1. Carga de datos
+   Lee y consolida las bases de datos trimestrales de la Encuesta Permanente 
+   de Hogares (EPH - INDEC) para el período 2020-2026, filtrando los registros 
+   muestrales pertenecientes a CABA y al Conurbano Bonaerense.
+
+2. Ajuste por inflación (Ingreso Real)
+   Aplica un deflactador basado en el Índice de Precios al Consumidor (IPC) 
+   para convertir los ingresos nominales (P47T) a ingresos reales a precios 
+   constantes. Esto permite medir la evolución real del poder adquisitivo 
+   superada la etapa crítica de la pandemia.
+
+3. Cálculo de tasas laborales (2020 - 2026)
+   Calcula trimestre a trimestre las métricas clave de la fuerza de trabajo:
+   - Tasa de Actividad: (PEA / Población Total) * 100
+   - Tasa de Empleo: (Ocupados / Población Total) * 100
+   - Tasa de Desocupación: (Desocupados / PEA) * 100
+   - Registros cuantitativos de Ocupados, Desocupados, Inactivos y PEA.
+
+4. Evolución de ingresos reales
+   Consolida las medidas de tendencia central de los ingresos reales:
+   - Ingreso promedio (Media)
+   - Ingreso mediano (Mediana)
+   Compara la brecha salarial persistente entre ambas regiones a lo largo de 
+   la trayectoria de recuperación post-pandemia.
+
+5. Visualización gráfica
+   Renderiza gráficos de barras interactivos (Matplotlib) que muestran 
+   visualmente el shock inicial de 2020 (aumento de inactividad) y el trayecto 
+   posterior de estabilización hasta 2026.
+
+6. Análisis univariado
+   Estudia el comportamiento individual de cada variable de condición laboral 
+   (Ocupados, Desocupados, Inactivos y Menores de 10 años) a lo largo de la serie.
+
+7. Medidas de tendencia central y posición
+   Evalúa la distribución del ingreso en la muestra mediante:
+   - Media y Mediana del ingreso real.
+   - Percentiles de posición (P25 y P75) para medir la dispersión salarial.
+
+8. Análisis multivariado
+   Cruza la condición de actividad con variables demográficas y educativas:
+   - Estado laboral por Sexo y Aglomerado (Varones vs. Mujeres en CABA y GBA).
+   - Comportamiento de la ocupación e inactividad según el Nivel Educativo (Básico vs. Superior).
+
+9. Modelo de regresión e imputación de ingresos
+   Entrena un algoritmo de Regresión Lineal Múltiple sobre la muestra con datos 
+   completos para predecir e imputar ingresos no declarados (valores NaN) usando:
+   - Edad (CH06)
+   - Nivel Educativo (NIVEL_ED)
+   - Sexo (CH04)
+   - Categoría Ocupacional (PP04B_COD)
+   - Rama de Actividad (PP04D_COD)
+   Informa métricas de ajuste del modelo (Error MSE y R²).
+
+10. Mapa georreferenciado
+    Genera la representación cartográfica de la región metropolitana (AMBA) 
+    utilizando librerías GeoPandas sobre capas GeoJSON.
+
+--------------------------------------------------------------------------------
+SÍNTESIS DEL BALANCE METROPOLITANO (2020-2026)
+--------------------------------------------------------------------------------
+
+* SHOCK INICIAL (2020): La pandemia provocó un pico histórico en la población 
+  inactiva y un desplome transitorio en la Tasa de Empleo en ambos aglomerados.
+* RECUPERACIÓN Y RECONFIGURACIÓN (2021 - 2023): Se observa un rápido retorno 
+  de la Tasa de Actividad, acompañado de un incremento en el empleo informal, 
+  con una recuperación más veloz de los indicadores laborales en CABA que en el Conurbano.
+* BALANCE HASTA EL PRESENTE (2024 - 2026): Estabilización de los niveles de 
+  ocupación, persistencia de la brecha salarial estructural entre ambas zonas 
+  y un fuerte impacto del nivel educativo como factor determinante para la 
+  preservación del ingreso real.
+
+--------------------------------------------------------------------------------
+                                FIN DEL INFORME
+--------------------------------------------------------------------------------
