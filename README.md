@@ -10,7 +10,7 @@ El objetivo principal es transformar registros crudos y masivos en información 
 *   **Análisis Predictivo y de Tendencias:** Categorización por niveles educativos, rangos etarios y sectores ocupacionales para identificar las brechas salariales más críticas frente a la inflación del período.
 
 #Stack Tecnológico
-*   **Lenguaje:** Python 3.14
+*   **Lenguaje:** Python 3.x
 *   **Manipulación de Datos:** Pandas, NumPy
 *   **Automatización:** Scripts modulares orientados a la reutilización de código.
 
